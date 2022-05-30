@@ -1,0 +1,10 @@
+\section{Automatisierte und anpassbare Produktionsplanung}
+\label{sec:produktionsplanung}
+
+Dieser Abschnitt beschäftigt sich mit einer weiteren Applikation, welche der Produktionsplanung dient. Der wesentliche Unterschied zur Prozessplanung besteht darin, dass hier ein Ablaufplan für mehrere Prozesse und mehrere Maschinen erstellt wird. Die bei der Prozessplanung entworfenen Prozesse werden also möglichst effizient aneinander gereiht und über die verfügbaren Maschinen verteilt. Dies ist vorwiegend dann relevant, wenn eine so große Menge an Prozessen zu erledigen sind, dass eine möglichst effiziente Ausführungsreihenfolge und -verteilung notwendig ist. Dies steht im Kontrast zur aktuellen Implementation der in Kapitel \ref{subsec:prozesssteuerung_implementierung} erdachten Prozesssteuerung, da dort die Prozesse sofort ausgeführt werden und eine Maschine immer direkt angesprochen wird.
+
+Neben der automatisierten Produktionsplanung soll es allerdings weiterhin für einen Nutzer möglich sein, direkt in den Plan einzugreifen. Ein Nutzer soll also über eine grafische Benutzeroberfläche den erstellten Produktionsplan einsehen und über intuitive Methoden (drag\&drop) anpassen können.
+
+Die Applikation soll also eine Liste an Prozessen erhalten sowie eine Liste an verfügbaren Maschinen, und soll diese Prozesse dann möglichst effizient auf die Maschinen aufteilen. Der wesentliche Fokus soll hier an der Benutzeroberfläche liegen. Eine „Maschine“ ist in diesem Kontext eine Fertigungseinheit, welche ein Produkt vollständig herstellen kann.
+
+Die konkretere Implementierung dieser Applikation sowie auch der zuvor genannten Anwendungen findet in Kapitel \ref{sec:implementierung} statt.

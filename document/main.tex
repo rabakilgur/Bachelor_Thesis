@@ -1,0 +1,284 @@
+\documentclass[
+	ngerman,
+	ruledheaders=section,%Ebene bis zu der die Überschriften mit Linien abgetrennt werden, vgl. DEMO-TUDaPub
+	class=report,% Basisdokumentenklasse. Wählt die Korrespondierende KOMA-Script Klasse
+	thesis={type=bachelor},% Dokumententyp Thesis, für Dissertationen siehe die Demo-Datei DEMO-TUDaPhd
+	accentcolor=1c,% Auswahl der Akzentfarbe
+	custommargins=geometry,% Ränder werden mithilfe von typearea automatisch berechnet
+	marginpar=false,% Kopfzeile und Fußzeile erstrecken sich nicht über die Randnotizspalte
+	%BCOR=5mm,%Bindekorrektur, falls notwendig
+	parskip=half-,%Absatzkennzeichnung durch Abstand vgl. KOMA-Script
+	fontsize=12pt,%Basisschriftgröße laut Corporate Design ist mit 9pt häufig zu klein
+    %logofile=example-image, %Falls die Logo Dateien nicht vorliegen
+    IMRAD=false,
+    pdfa=true,
+    table,
+    xcdraw,
+]{tudapub}
+
+\usepackage{silence}
+\geometry{reset, left=3cm, right=2cm, bottom=3.5cm}
+\usepackage{setspace}
+\usepackage{paralist}
+\usepackage[justification=centering]{caption}
+
+\definecolor{dikblue}{HTML}{004E8A}
+\definecolor{lightgray}{rgb}{0.95, 0.95, 0.95}
+\definecolor{darkgray}{rgb}{0.2, 0.21, 0.25}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+
+\usepackage{listings}
+
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  keywordstyle=\color{purple}\bfseries,
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{darkgray},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{dikblue}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+
+\lstset{
+   language=JavaScript,
+   backgroundcolor=\color{lightgray},
+   extendedchars=true,
+   basicstyle=\footnotesize\ttfamily,
+   showstringspaces=false,
+   showspaces=false,
+   numbers=left,
+   numberstyle=\footnotesize,
+   numbersep=9pt,
+   tabsize=2,
+   breaklines=true,
+   showtabs=false,
+   captionpos=b
+}
+
+%%%%%%%%%%%%%%%%%%%
+%Sprachanpassung & Verbesserte Trennregeln
+%%%%%%%%%%%%%%%%%%%
+\usepackage[english, main=ngerman]{babel}
+\usepackage[autostyle]{csquotes}% Anführungszeichen vereinfacht
+
+% Falls mit pdflatex kompiliert wird, wird microtype automatisch geladen, in diesem Fall muss diese Zeile entfernt werden, und falls weiter Optionen hinzugefügt werden sollen, muss dies über
+% \PassOptionsToPackage{Optionen}{microtype}
+% vor \documentclass hinzugefügt werden.
+\usepackage{microtype}
+
+%%%%%%%%%%%%%%%%%%%
+%Literaturverzeichnis
+%%%%%%%%%%%%%%%%%%%
+\usepackage[citestyle=authoryear,natbib=true]{biblatex}
+%\usepackage[backend=biber,style=alphabetic]{biblatex}
+%\bibliographystyle{unsrt}
+\bibliography{bibliography}
+
+%%%%%%%%%%%%%%%%%%%
+%Paketvorschläge Tabellen
+%%%%%%%%%%%%%%%%%%%
+%\usepackage{array}     % Basispaket für Tabellenkonfiguration, wird von den folgenden automatisch geladen
+\usepackage{tabularx}   % Tabellen, die sich automatisch der Breite anpassen
+%\usepackage{longtable} % Mehrseitige Tabellen
+%\usepackage{xltabular} % Mehrseitige Tabellen mit anpassarer Breite
+\usepackage{booktabs}   % Verbesserte Möglichkeiten für Tabellenlayout über horizontale Linien
+
+%%%%%%%%%%%%%%%%%%%
+%Paketvorschläge Mathematik
+%%%%%%%%%%%%%%%%%%%
+%\usepackage{mathtools} % erweiterte Fassung von amsmath
+%\usepackage{amssymb}   % erweiterter Zeichensatz
+%\usepackage{siunitx}   % Einheiten
+
+%Formatierungen für Beispiele in diesem Dokument. Im Allgemeinen nicht notwendig!
+%\let\file\texttt
+%\let\code\texttt
+%\let\tbs\textbackslash
+%\let\pck\textsf
+%\let\cls\textsf
+
+\usepackage{pifont}% Zapf-Dingbats Symbole
+\newcommand*{\FeatureTrue}{\ding{52}}
+\newcommand*{\FeatureFalse}{\ding{56}}
+
+\usepackage{import}
+
+\newcommand{\TUTyp}{Bachelor-Thesis}
+\newcommand{\TUTitel}{Potenzialanalyse von benutzergesteuerten Anpassungs- und Analysewerkzeugen für Wertschöpfungsketten}
+\newcommand{\TUStadt}{Darmstadt}
+\newcommand{\TUAutor}{Robin Lucas Garbe}
+\newcommand{\TUMatrikelnr}{2634021}
+\newcommand{\TUStudiengang}{Informatik}
+\newcommand{\TUProf}{Prof. Dr.-Ing. Reiner Anderl, Prof. Dr. Peter Buxmann}
+\newcommand{\TUBetreuer}{Y\"ubo Wang, M.Sc. M.A. \& Timo Koppe, M.Sc.}
+\newcommand{\TUFachgebiet}{Fachgebiet Datenverarbeitung in der Konstruktion}
+\newcommand{\TUFachbereich}{Fachbereich Maschinenbau}
+\newcommand{\TUAdresse}{Otto-Berndt-Stra\ss{}e 2}
+\newcommand{\TUPostleitzahl}{64287}
+\newcommand{\TUAbgabe}{21.01.2022}
+
+% ╔═════════════════════════════════════════════════════════════════════════════════════════════════╗ %
+% ║ Beginn des Dokumentes                                                                         % ║ %
+% ╚═════════════════════════════════════════════════════════════════════════════════════════════════╣ %
+\begin{document}                                                                                  % ║ %
+% ══════════════════════════════════════════════════════════════════════════════════════════════════╝ %
+
+% ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐ %
+\pagenumbering{gobble}                                                                            % │ %
+% ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘ %
+
+\Metadata{
+	title=Potenzialanalyse von benutzergesteuerten Anpassungs- und Analysewerkzeugen für Wertschöpfungsketten,
+	author=Robin Lucas Garbe
+}
+
+\title{Potenzialanalyse von benutzergesteuerten Anpassungs- und Analysewerkzeugen für Wertschöpfungsketten}
+\subtitle{Potential analysis of low-end user-controlled adjustment and analysis tools for value chains}
+\author[R. Garbe]{Robin Lucas Garbe}%optionales Argument ist die Signatur,
+\birthplace{Darmstadt}%Geburtsort, bei Dissertationen zwingend notwendig
+\reviewer{Prof. Dr.-Ing. Reiner Anderl \and Prof. Dr. Peter Buxmann}%Gutachter
+\department{mb} % Das Kürzel wird automatisch ersetzt und als Studienfach gewählt, siehe Liste der Kürzel im Dokument.
+\institute{Fachgebiet Datenverarbeitung in der Konstruktion}
+%\group{Arbeitsgruppe}
+\submissiondate{\TUAbgabe}
+\examdate{\TUAbgabe}
+
+% Hinweis zur Lizenz:
+% TUDa-CI verwendet momentan die Lizenz CC BY-NC-ND 2.0 DE als Voreinstellung.
+% Die TU Darmstadt hat jedoch die Empfehlung von dieser auf die liberalere
+% CC BY 4.0 geändert. Diese erlaubt eine Verwendung bearbeiteter Versionen und
+% die kommerzielle Nutzung.
+% TUDa-CI wird im nächsten größeren Release ebenfalls diese Anpassung vornehmen.
+% Aus diesem Grund wird empfohlen die Lizenz manuell auszuwählen.
+% \tuprints{urn=1234,printid=12345,doi=10.25534/tuprints-1234,license=cc-by-4.0}
+% To see furhter information on the license option in English, remove the license= key and pay attention to the warning & help message.
+
+% \dedication{Für alle, die \TeX{} nutzen.}
+
+% ┌─────────────────────────────────────────────────────────────────────────────────────────────────┐ %
+% │ Erzeugung der Titelseite                                                                      % │ %
+% └─────────────────────────────────────────────────────────────────────────────────────────────────┤ %
+\pdfbookmark[0]{Titelseite}{titelseite}                                                           % │ %
+\maketitle                                                                                        % │ %
+% ──────────────────────────────────────────────────────────────────────────────────────────────────┘ %
+
+\onehalfspacing
+
+% ┌─────────────────────────────────────────────────────────────────────────────────────────────────┐ %
+% │ Kontaktseite einfügen                                                                         % │ %
+% └─────────────────────────────────────────────────────────────────────────────────────────────────┤ %
+\pdfbookmark[0]{Impressum}{impressum}                                                             % │ %
+\include{common/impressum}                                                                        % │ %
+% ──────────────────────────────────────────────────────────────────────────────────────────────────┘ %
+
+
+% ┌─────────────────────────────────────────────────────────────────────────────────────────────────┐ %
+% │ Erklärungen einfügen                                                                          % │ %
+% └─────────────────────────────────────────────────────────────────────────────────────────────────┤ %
+\pdfbookmark[0]{Erklärungen}{section}                                                             % │ %
+\include{common/erklaerung}                                                                       % │ %
+% ──────────────────────────────────────────────────────────────────────────────────────────────────┘ %
+
+
+% ┌─────────────────────────────────────────────────────────────────────────────────────────────────┐ %
+% │ Thema einfügen                                                                                % │ %
+% └─────────────────────────────────────────────────────────────────────────────────────────────────┤ %
+\pdfbookmark[0]{Thema}{section}                                                                   % │ %
+\include{common/thema}                                                                            % │ %
+% ──────────────────────────────────────────────────────────────────────────────────────────────────┘ %
+
+
+% ┌─────────────────────────────────────────────────────────────────────────────────────────────────┐ %
+% │ Abstract einfügen                                                                             % │ %
+% └─────────────────────────────────────────────────────────────────────────────────────────────────┤ %
+\pdfbookmark[0]{Abstract}{abstract}                                                               % │ %
+\include{common/abstract}                                                                         % │ %
+% ──────────────────────────────────────────────────────────────────────────────────────────────────┘ %
+
+
+% ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐ %
+\pagenumbering{roman}                                                                             % │ %
+% ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘ %
+
+
+% ┌─────────────────────────────────────────────────────────────────────────────────────────────────┐ %
+% │ Inhaltsverzeichnis                                                                            % │ %
+% └─────────────────────────────────────────────────────────────────────────────────────────────────┤ %
+\pdfbookmark[0]{Inhaltsverzeichnis}{toc}                                                          % │ %
+\tableofcontents                                                                                  % │ %
+\clearpage                                                                                        % │ %
+% ──────────────────────────────────────────────────────────────────────────────────────────────────┘ %
+
+
+% ┌─────────────────────────────────────────────────────────────────────────────────────────────────┐ %
+% │ Abbildungsverzeichnis                                                                         % │ %
+% └─────────────────────────────────────────────────────────────────────────────────────────────────┤ %
+\pdfbookmark[0]{Abbildungsverzeichnis}{lof}                                                       % │ %
+\listoffigures                                                                                    % │ %
+\clearpage                                                                                        % │ %
+% ──────────────────────────────────────────────────────────────────────────────────────────────────┘ %
+
+
+% ┌─────────────────────────────────────────────────────────────────────────────────────────────────┐ %
+% │ Tabellenverzeichnis                                                                           % │ %
+% └─────────────────────────────────────────────────────────────────────────────────────────────────┤ %
+\pdfbookmark[0]{Abbildungsverzeichnis}{lot}                                                       % │ %
+\listoftables                                                                                     % │ %
+\clearpage                                                                                        % │ %
+% ──────────────────────────────────────────────────────────────────────────────────────────────────┘ %
+
+
+% ┌─────────────────────────────────────────────────────────────────────────────────────────────────┐ %
+% │ Symbole und Abkürzungen                                                                       % │ %
+% └─────────────────────────────────────────────────────────────────────────────────────────────────┤ %
+\pdfbookmark[0]{Symbole und Abkürzungen}{symbole}                                                 % │ %
+\input{common/symbole}                                                                            % │ %
+\clearpage                                                                                        % │ %
+% ──────────────────────────────────────────────────────────────────────────────────────────────────┘ %
+
+
+% ╔═════════════════════════════════════════════════════════════════════════════════════════════════╗ %
+% ║ Hauptteil                                                                                     % ║ %
+% ╚═════════════════════════════════════════════════════════════════════════════════════════════════╣ %
+\pagenumbering{arabic}                                                                            % ║ %
+\subimport*{chapters/01}{_Einleitung}                                                             % ║ %
+\subimport*{chapters/02}{_Stand}                                                                  % ║ %
+\subimport*{chapters/03}{_Grundlagen}                                                             % ║ %
+\subimport*{chapters/04}{_Prozessplanung}                                                         % ║ %
+\subimport*{chapters/05}{_Produktionsplanung}                                                     % ║ %
+\subimport*{chapters/06}{_Verifikation}                                                           % ║ %
+\subimport*{chapters/07}{_Ausblick}                                                               % ║ %
+\clearpage                                                                                        % ║ %
+% ══════════════════════════════════════════════════════════════════════════════════════════════════╝ %
+
+
+% ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐ %
+\pagenumbering{roman}                                                                             % │ %
+% ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘ %
+
+
+% ┌─────────────────────────────────────────────────────────────────────────────────────────────────┐ %
+% │ Literaturverzeichnis                                                                          % │ %
+% └─────────────────────────────────────────────────────────────────────────────────────────────────┤ %
+\printbibliography                                                                                % │ %
+% ──────────────────────────────────────────────────────────────────────────────────────────────────┘ %
+
+
+% ┌─────────────────────────────────────────────────────────────────────────────────────────────────┐ %
+% │ Anhang                                                                                        % │ %
+% └─────────────────────────────────────────────────────────────────────────────────────────────────┤ %
+\appendix                                                                                         % │ %
+\input{common/anhang}                                                                             % │ %
+% ──────────────────────────────────────────────────────────────────────────────────────────────────┘ %
+
+
+% ╔═════════════════════════════════════════════════════════════════════════════════════════════════╗ %
+% ║ Ende des Dokumentes                                                                           % ║ %
+% ╚═════════════════════════════════════════════════════════════════════════════════════════════════╣ %
+\end{document}                                                                                    % ║ %
+% ══════════════════════════════════════════════════════════════════════════════════════════════════╝ %

@@ -1,0 +1,26 @@
+\chapter{Ausblick und Zusammenfassung}
+\label{cha:ausblick}
+
+In diesem abschließenden Kapitel soll zunächst ein Ausblick auf zukünftige Arbeiten und Forschungsansätze geworfen werden, welche auf dieser Thesis aufbauen oder an sie anknüpfen. Im Anschluss daran werden die wesentlichen Inhalte und wichtigsten Ergebnisse dieser Arbeit noch einmal zusammengefasst.
+
+\section{Ausblick}
+\label{sec:ausblick}
+
+Zunächst sei natürlich auf die in Kapitel \ref{subsec:latenzen} entwickelte und in Grafik \ref{fig:verbesserteKommunikationsInfrastruktur} abgebildete verbesserte Kommunikations-Infrastruktur hingewiesen. Ein zentraler Ansatzpunkt für eine weitere Arbeit wäre demnach, diese Infrastruktur zu implementieren, um so die Latenz-Varianzen signifikant zu senken. Dieses Gesamtsystem kann jedoch auch noch an vielen Ecken zusätzlich erweitert und ausgebaut werden. So kann die Cloud-Schicht um weitere Funktionen wie etwa WebSockets (siehe Kapitel \ref{sec:websockets}) oder Webhooks erweitert werden. So könnte etwa der Nachrichten-Service seine Daten immer sofort vom Server erhalten, statt ihn periodisch nach Änderungen abzufragen. Zudem wäre so eine tiefgehendere Kommunikation zwischen den Schichten der vorgeschlagenen Infrastruktur möglich, da so auch Statusmeldungen von der Cloud direkt zum Nutzer durchgegeben werden könnten. Zu einem ähnlichen Zweck kann der Computer, welcher in Grafik \ref{fig:verbesserteKommunikationsInfrastruktur} hinzugefügt wurde und welcher das Parsen und Weitergeben der Befehle an die PLC übernimmt, um einen Web-Client erweitert werden. So könnte auch vonseiten der Maschine her eine umfangreichere Kommunikation an die Cloud ermöglicht werden.
+
+Die Anbindung einer Simulation mittels digitalem Zwilling bietet ein großes Potenzial, da so zum einen eine bessere Planung möglich ist, aber zum anderen auch ein umfangreicheres und agileres Testen ermöglicht wird. Außerdem könnten – sobald die Webseite der Digital Twin Academy ausgereifter ist –  automatisierte Integrationstests genutzt werden, um die ständige und fortlaufende Funktionsfähigkeit der vorgestellten Applikationen zu gewährleisten.
+
+Die in Kapitel \ref{sec:produktionsplanung} vorgestellte Applikation zur automatisierten und anpassbaren Produktionsplanung sei noch gesondert hervorgehoben, da diese Softwarelösung bisher als ein alleinstehendes Konzept entwickelt wurde. Mit einer weiter ausgearbeiteten Cloud-Schicht, mehr Anlagen ähnlichen Typs und mehr Nutzern der Seite würde es sich lohnen, diese Anwendung in den Arbeitsablauf zu integrieren.
+
+Neben diesen Erweiterungsmöglichkeiten besteht natürlich auch das Potenzial des trivialen Ausbaus der aktuell angedachten Struktur. Das implementierte System kann automatisiert mit neuen Anlagen zurechtkommen, sodass weitere PLCs einfach hinzugefügt werden und direkt benutzbar sind.
+
+Als Teil der Digital Twin Platform haben die in dieser Thesis vorgestellten Softwarelösungen ein großes Wachstums- und Erweiterungspotenzial. Zum aktuellen Zeitpunkt sind bereits mehrere Bachelor- und Masterarbeiten rund um die Digital Twin Platform in Arbeit.
+
+\section{Zusammenfassung der wichtigsten Ergebnisse}
+\label{sec:zusammenfassung}
+
+Industrie 4.0 und IIoT sind Schlüssel-Technologien zur individuellen Produktion mittels Manufacturing-on-demand und Manufacuring-as-a-Service (MaaS). Hierfür werden interoperable, serviceorientierte und modulare Anwendungen benötigt, welche es ermöglichen, Endnutzer auf eine simple und benutzerfreundliche Art direkt mit den Maschinen zu verbinden. Neben der Integration der Verbraucher in die Produktion mittels MaaS sind auch moderne Anwendungsfälle wie Heimarbeit oder Fernwartung bedeutend. Eine allgemeinere Architektur mit einer flexiblen Benutzeroberfläche ist hierbei vorteilhafter als eine Vielzahl von Einzellösungen.
+
+Es bieten sich also webbasierte und benutzerfreundliche Applikationen an, welche vom Benutzer für verschiedene Anlagen genutzt werden können und eine besonders niedrige Eintrittsbarriere haben. Die Modularität der vorgestellten Lösungen steht dabei im Vordergrund, sodass sie auf breiter Ebene einsetzbar sind.
+
+In dieser Thesis wurden demnach Softwarelösungen zur endbenutzergesteuerten Prozessplanung und -steuerung sowie zur Produktionsplanung konzipiert, implementiert und auf ihr Potenzial analysiert. Beide Applikationen wurden in die Digital Twin Academy Webseite integriert. Es wurde das Potenzial einer Fertigung nach den Maßstäben von Manufacturing-as-a-Service aufgezeigt und die entwickelten Anwendungen wurden verifiziert und validiert.

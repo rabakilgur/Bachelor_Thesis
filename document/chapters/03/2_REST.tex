@@ -1,0 +1,57 @@
+\section{REST APIs}
+\label{sec:rest}
+
+Representational State Transfer (REST) ist der Name des Softwarearchitekturstils, der im Jahr 2000 von Roy Fielding in dessen Dissertation geprägt wurde [\cite{fieldingDissertation}]. REST benutzt dabei die zugrundeliegenden Protokolle und Technologien des World Wide Webs, um Richtlinien und Einschränkungen zu definieren, wie eine verteilte Softwarearchitektur sich verhalten sollte.
+
+Ein häufiges Anwendungsgebiet für die von REST definierten Paradigmen sind Application Programming Interfaces (APIs). Eine API ist Software, welche es Anwendungen ermöglicht, über vordefinierte Methoden und Spezifikationen miteinander zu kommunizieren [\cite{restApiDesign}]. Es dient dabei als die Schnittstelle zwischen verschiedenen Softwareprogrammen und erleichtert deren Interaktion.
+
+\subsection{REST API Kommunikation}
+\label{subsec:rest_kommunikation}
+
+Eine REST API (auch „RESTful API“ genannt) definiert eine Reihe von Funktionen, mit denen Entwickler Anfragen über HTTP-Protokolle wie GET, POST, PUT, PATCH, und DELETE ausführen und Antworten empfangen können [\cite{restWebApi}]. Wie in Grafik \ref{fig:Rest_API} zu sehen ist, bildet die REST API dabei üblicherweise eine Schnittstelle zwischen einem Client (welcher auch ein Softwareprogramm sein kann) und einer Datenbank.
+%
+\begin{figure}[h]
+    \vspace{5mm}
+	\centering\includegraphics[width=0.9\textwidth]{images/03/Rest_API.pdf}
+    \caption{REST API Kommunikation}
+    \label{fig:Rest_API}
+\end{figure}
+
+\subsection{Eigenschaften von REST APIs}
+\label{subsec:rest_eigenschaften}
+
+Nicht jede API ist jedoch auch eine REST API. Dafür müssen sechs Kriterien und Eigenschaften erfüllt sein [\cite{fieldingDissertation}], welche sich vom REST Architekturstil ableiten. Es sollte jedoch erwähnt werden, dass die strenge Einhaltung dieser Attribute nicht immer gewünscht oder möglich ist. Genau genommen wäre eine solche API dann nicht mehr „truly RESTful“, doch in der Praxis hat dies wenig Relevanz und es geht vielmehr darum, diese Eigenschaften dort so gut wie angemessen möglich umzusetzen, wo es auch sinnvoll ist.
+
+\subsubsection*{Einheitlichkeit}
+\label{subsubsec:rest_einheitlichkeit}
+
+Die Schnittstelle einer REST API sollte so konsistent wie möglich sein. Es sollte dabei nicht zwei Endpunkte für eine Ressource geben und in der Ressource sollten (möglichst relative) Links zu zusammengehörigen, relevanten, oder weiterführenden Daten enthalten sein. Diese weiterführenden Links werden auch HATEOAS (Hypermedia as the Engine of Application State) genannt.\\
+Alle Ressourcen sollten über konsistente Methoden zugänglich sein und in ähnlicher Weise modifiziert werden können. Des Weiteren sollte das gesamte System sich an einheitliche Richtlinien bezüglich URL-Formaten, Namenskonventionen und Datenformaten halten.
+
+\subsubsection*{Zustandslosigkeit}
+\label{subsubsec:rest_zustandslosigkeit}
+
+Ein „Zustand“ ist in diesem Kontext das Stadium, in dem der Client sich zu einem gegebenen Zeitpunkt befindet. Dieser Zustand kann dann relevant sein, wenn das Ergebnis einer Anfrage von dem aktuellen Zustand abhängt. Ein Beispiel hierfür wäre, dass in einer Suchmaschine auf der fünften Seite der Knopf „Nächste Seite“ geklickt wird.\\
+Bei einer REST API ist der Client dafür verantwortlich den Zustand zu verwalten, und bei abhängigen Anfragen wie in dem genannten Beispiel, muss der Client den aktuellen Zustand in der Anfrage an den Server senden. Üblicherweise würde dann der Zustand in die URL der Anfrage eingebettet werden.
+
+\subsubsection*{Zwischenspeicherbar}
+\label{subsubsec:rest_zwischenspeicherbar}
+
+Im Kontext einer REST API bezieht sich das Zwischenspeichern (engl.: „cachen“) auf das Abspeichern der Serverantwort. Aufgrund der Zustandslosigkeit des Servers geschieht dieses Speichern auf der Seite des Clients, also in der Regel in dessen Web-Browser. Mit dieser Methode ist es möglich, dass ein Client eine Anfrage, zu der er eine Antwort bereits gespeichert hat, gegebenenfalls nicht noch einmal senden muss.\\
+Die Antwort des Servers sollte hierfür Informationen darüber enthalten, ob und wie sie von einem Empfänger zwischengespeichert werden sollte.
+
+\subsubsection*{Client-Server-Orientierung}
+\label{subsubsec:rest_clientserverorientierung}
+
+Eine REST API sollte – wie auch der ihr zugrundeliegende HTTP Standard – dem Client-Server Modell folgen (siehe Kapitel \ref{sec:http}). Der Client muss also die Kommunikation initiieren und der Server antwortet auf diese Anfrage.
+
+\subsubsection*{Schichtsystem}
+\label{subsubsec:rest_schichtsystem}
+
+Bei einer mehrschichtigen Systemarchitektur soll es möglich sein, dass eine Anfrage in mehreren Schritten von verschiedenen Servern bearbeitet werden kann. Beispielsweise sollte ein Server die API-Schnittstelle bereitstellen, ein anderer eine Authentifizierung ermöglichen, und ein Dritter mit einer Datenbank verbunden sein. Für den Client sollte es dabei üblicherweise nicht ersichtlich sein, ob er direkt mit dem Endserver oder mit einem Zwischenhändler kommuniziert.
+
+\subsubsection*{Code auf Anfrage}
+\label{subsubsec:rest_codeaufanfrage}
+
+Dieser letzte Punkt ist weniger eine Anforderung, sondern eher ein besonderer Fall, welcher explizit erlaubt ist.\\
+In der Regel sendet der Server seine Antwort an den Client als statische Datenrepräsentation in Form von JSON (JavaScript Object Notation) oder XML (Extensible Markup Language). Allerdings ist es auch möglich, ausführbaren Programmcode als Antwort zu senden. Dieser Code kann dann vom Client direkt ausgeführt werden. Dies kann in Situationen praktisch sein, in denen es vermieden werden soll oder es nicht möglich ist, zusätzliche Logik auf der Clientseite auszuführen, welche die Serverantwort parst, evaluiert, und dann ausführt.
